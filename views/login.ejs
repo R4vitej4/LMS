@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>User Authentication</title>
+
+  <style>
+    form {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      width: 300px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    button {
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 5px;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: 1px solid #4CAF50;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>User Authentication</h1>
+  <div id="signupForm" style="display: none;">
+    <h2>Signup</h2>
+    <form action="/signup" method="post">
+      <input type="text" placeholder="Username" name="username">
+      <input type="password" placeholder="Password" name="password">
+      <button id="loginBtn" onclick="showLoginForm()">Login</button>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+
+  <div id="loginForm" >
+    <h2>Login</h2>
+    <form action="/login" method="post">
+      <input type="text" placeholder="Username" name="username">
+      <input type="password" placeholder="Password" name="password">
+      <button id="signupBtn" onclick="showSignupForm()">Sign Up</button>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    function showLoginForm() {
+      document.getElementById("signupForm").style.display = "none";
+      document.getElementById("loginForm").style.display = "block";
+    }
+    
+    function showSignupForm() {
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("signupForm").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

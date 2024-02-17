@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ChatRoom</title>
+
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
+</head>
+<body>
+  <h1>All Books</h1>
+
+  <table>
+    <tr>
+      <th>Book Name</th>
+      <th>Book Author</th>
+      <th>Book Pages</th>
+      <th>Book Price</th>
+      <th>Book Availability</th>
+      <th>Issue</th>
+      <th>Return</th>
+      <th>Delete</th>
+    </tr>
+    <% data.forEach(element=> { %>
+      <tr>
+        <td>
+          <%= element.BookName %>
+        </td>
+        <td>
+          <%= element.BookAuthor %>
+        </td>
+        <td>
+          <%= element.BookPages %>
+        </td>
+        <td>
+          <%= element.BookPrice %>
+        </td>
+        <td>
+          <%= element.BookState %>
+        </td>
+        <td>
+            <form action="book/issue" method="post">
+              <input type="text" style="display:none" name="BookName" value="<%= element.BookName %>">
+              <button type="submit">Issue</button>
+            </form>
+        </td>
+        <td>
+            <form action="book/return" method="post">
+              <input type="text" style="display:none" name="BookName" value="<%= element.BookName %>">
+              <button type="submit">Return</button>
+            </form>
+        </td>
+        <td>
+            <form action="book/delete" method="post">
+              <input type="text" style="display:none" name="BookName" value="<%= element.BookName %>">
+              <button type="submit">Delete</button>
+            </form>
+        </td>
+      </tr>
+      <% }) %>
+
+  </table>
+<form action="/book" method="post">
+  <input type="text" placeholder="Book Name" name="BookName">
+  <input type="text" placeholder="Book Author" name="BookAuthor">
+  <input type="text" placeholder="Book Pages" name="BookPages">
+  <input type="text" placeholder="Book Price" name="BookPrice">
+  <button type="submit">Add</button>
+</form>
+<form action="/" method="post">
+  <button type="submit" style="position: absolute; top: 10px; right: 10px;">Logout</button>
+</form>
+
+</body>
+</html>
